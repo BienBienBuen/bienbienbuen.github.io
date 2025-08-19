@@ -1,0 +1,325 @@
+/* PBB-inspired portfolio layout that fills available space */
+.portfolio-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-section {
+  margin-bottom: 2rem;
+}
+
+.portfolio-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #007acc;
+  position: relative;
+}
+
+.portfolio-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #00a2ff;
+}
+
+/* PBB-style research card layout */
+.portfolio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  height: 100%;
+}
+
+.portfolio-item {
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+/* PBB-style card content layout with 3-column structure */
+.portfolio-card-content {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch; /* Stretch to match image height */
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+/* Left column containing text and tags */
+.portfolio-left-column {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 66.666%;      /* Fixed width: 2/3 of card */
+  gap: 0.25rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.portfolio-text-content {
+  flex: 1; /* Takes remaining space above tags */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;  /* Reduce spacing between text elements */
+  min-width: 0;
+  overflow: hidden;
+}
+
+.portfolio-tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0.5rem 0;
+  flex-shrink: 0; /* Fixed height for tags */
+  align-items: center;
+}
+
+.portfolio-image-container {
+  flex-shrink: 0;
+  width: 320px;
+  /* Height automatically matches left column */
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;      /* Center image vertically */
+  justify-content: center;  /* Center image horizontally */
+  color: #6c757d;
+  font-size: 0.8rem;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* Maintain aspect ratio, don't stretch */
+  object-position: center;  /* Center the image */
+}
+
+.portfolio-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;  /* Remove top margin */
+  color: #2c3e50;
+  line-height: 1.3;
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    
+    &:hover {
+      color: #007acc;
+    }
+  }
+}
+
+.portfolio-authors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  
+  .author {
+    &:not(:last-child)::after {
+      content: ',';
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        color: #007acc;
+      }
+    }
+    
+    &.highlight {
+      font-weight: 600;
+    }
+  }
+}
+
+.portfolio-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #8e9aaf;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-date {
+  font-weight: 500;
+}
+
+.portfolio-status {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.portfolio-description {
+  color: #6c757d;
+  line-height: 1.4;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-tag {
+  background: #fff3e0;           /* Light orange background */
+  color: #f57c00;               /* Orange text */
+  border: 1px solid #ff9800;    /* Orange border */
+  padding: 0.2rem 0.6rem;       /* Larger padding */
+  border-radius: 8px;           /* Less rounded corners */
+  font-size: 0.75rem;           /* Medium text size */
+  font-weight: 500;             /* Medium weight */
+  text-decoration: none !important;        /* No underline - force override */
+  text-decoration-line: none !important;   /* Force no underline */
+  text-decoration-style: none !important;  /* Force no underline */
+  text-decoration-color: transparent !important; /* Force no underline color */
+  text-decoration-thickness: 0 !important; /* Force no underline thickness */
+  transition: all 0.2s ease;    /* Smooth transitions */
+  
+  /* Override any global link styles */
+  &:link, &:visited, &:active, &:focus {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    text-decoration-thickness: 0 !important;
+  }
+  
+  &:hover {
+    background: #ffe0b2;        /* Lighter orange on hover */
+    border-color: #f57c00;      /* Darker border on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    text-decoration-thickness: 0 !important;
+  }
+}
+
+.portfolio-links {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.portfolio-link {
+  background: transparent;
+  color: #007acc;
+  border: 1px solid #007acc;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #007acc;
+    color: white;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    gap: 0.75rem;
+  }
+  
+  .portfolio-item {
+    padding: 0.75rem;
+  }
+  
+  .portfolio-section-title {
+    font-size: 1.5rem;
+  }
+  
+  .portfolio-card-content {
+    gap: 0.75rem;
+  }
+}
+
+/* Optimize portfolio content area to use more space while keeping sidebar */
+.page {
+  @include breakpoint($large) {
+    @include span(10 of 12 last);  /* Use 10/12 columns (83.33% width) - same as default */
+    @include prefix(0.5 of 12);    /* 0.5 column prefix - same as default */
+    @include suffix(2 of 12);      /* 2 column suffix for sidebar - same as default */
+  }
+}
+
+/* Increase main container width for portfolio */
+#main {
+  @include breakpoint($x-large) {
+    max-width: 1800px;  /* Increase from 1280px to 1800px */
+  }
+}
+
+/* Optimize portfolio content to use more of the available space */
+.page__inner-wrap {
+  @include breakpoint($large) {
+    width: 99% !important;               /* Match page width (99% for slight margin) */
+    max-width: none !important;          /* Remove max-width constraints */
+    padding-right: 0 !important;         /* Remove right padding */
+    margin-right: 0 !important;          /* Remove right margin */
+    margin-left: 0 !important;           /* Remove left margin */
+    box-sizing: border-box;              /* Include padding in width calculation */
+  }
+}
+
+/* Make portfolio content area more flexible */
+.page__content {
+  @include breakpoint($large) {
+    padding-right: 0 !important;         /* Remove right padding */
+    width: 100% !important;              /* Force full width */
+    max-width: none !important;          /* Remove max-width constraints */
+    box-sizing: border-box;              /* Include padding in width calculation */
+  }
+}
+
+/* Additional override for portfolio container */
+.portfolio-container {
+  @include breakpoint($large) {
+    width: 100% !important;              /* Force full width */
+    max-width: none !important;          /* Remove max-width constraints */
+    margin: 0 !important;                /* Remove margins */
+    padding: 0 !important;               /* Remove padding */
+    box-sizing: border-box;              /* Include padding in width calculation */
+  }
+} 
